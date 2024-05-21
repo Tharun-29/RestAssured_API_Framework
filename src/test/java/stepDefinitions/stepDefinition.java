@@ -15,6 +15,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import resources.APIResources;
 import resources.TestDataBuilds;
 import resources.Utility;
 
@@ -28,21 +29,28 @@ public class stepDefinition extends Utility {
 	@Given("Add Place Payload with {string} {string} {string}")
 	public void add_place_payload_with(String name, String language, String address) throws IOException {
 	    
-		// Provide the request spec builder created
+	   // Provide the request spec builder created
 	   // Provide the addGoogleMaps object input in the body for input request payload
 	   res = given().spec(requestSpecification()).body(data.addPlacePayload(name, language, address));
 		
 	}
 
 
-
-	@When("user calls {string} with Post Http Request")
-	public void user_calls_with_post_http_request(String string) {
-
+	@When("user calls {string} with {string} Http Request")
+	public void user_calls_with_http_request(String resource, String method) {
+       
+		APIResources resourceAPI = APIResources.valueOf(resource);
+		System.out.println(resourceAPI.getResource());
+	  	
 		// Creating object of Response Spec builder
 		respon = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-
-		response = res.when().post("/maps/api/place/add/json").then().spec(respon).extract().response();
+        
+		
+		if(method.equalsIgnoreCase("POST")){
+		response = res.when().post(resourceAPI.getResource());		
+		}else if(method.equalsIgnoreCase("GET")) {
+			response = res.when().get(resourceAPI.getResource());
+		}
 	}
 
 	@Then("the API call is success with status code {int}")
