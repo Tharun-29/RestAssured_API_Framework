@@ -32,7 +32,7 @@ public class stepDefinition extends Utility {
 	   // Provide the request spec builder created
 	   // Provide the addGoogleMaps object input in the body for input request payload
 	   res = given().spec(requestSpecification()).body(data.addPlacePayload(name, language, address));
-		
+	   
 	}
 
 
@@ -48,7 +48,7 @@ public class stepDefinition extends Utility {
 		
 		if(method.equalsIgnoreCase("POST")){
 		response = res.when().post(resourceAPI.getResource());		
-		}else if(method.equalsIgnoreCase("GET")) {
+		}else if(method.equalsIgnoreCase("GET")){
 			response = res.when().get(resourceAPI.getResource());
 		}
 	}
