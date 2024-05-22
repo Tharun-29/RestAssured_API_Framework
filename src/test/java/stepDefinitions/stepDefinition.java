@@ -61,9 +61,19 @@ public class stepDefinition extends Utility {
 
 	@Then("{string} in response body is {string}")
 	public void in_response_body_is_ok(String keyValue, String expectedValue) {
-		String resp = response.asString();
-		JsonPath js = new JsonPath(resp);
-		assertEquals(js.getString(keyValue), expectedValue);
+		assertEquals(getJsonPath(response, keyValue), expectedValue);
+	}
+	
+	@Then("verify place_Id created maps to {string} using {string}")
+	public void verify_place_id_created_maps_to_using(String expectedName, String resource) throws IOException {
+	   
+		// Prepare Request Spec
+		String place_id = getJsonPath(response,"place_id");
+		res = given().spec(requestSpecification()).queryParam("place_id",place_id);
+		user_calls_with_http_request(resource, "GET");
+		String actualName = getJsonPath(response,"name");
+		assertEquals(actualName, expectedName);;
+		
 	}
 
 }
