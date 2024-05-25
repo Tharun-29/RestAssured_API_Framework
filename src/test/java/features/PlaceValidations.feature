@@ -1,5 +1,6 @@
 Feature: Validating Place API's
 
+@AddPlace
 Scenario Outline: Verify if Place is being Successfully added using AddPlaceAPI
 
 Given Add Place Payload with "<name>" "<language>" "<address>"
@@ -12,7 +13,8 @@ Examples:
       | name   | language | address |
       | Randy  | English  | Reading |
       #| Jackson| Tamil    | Slough  |
-      
+
+@DeletePlace
 Scenario Outline: Verify if Delete Place functionality is working
 
 Given DeletePlace Payload
