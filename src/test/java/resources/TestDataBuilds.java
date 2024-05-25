@@ -37,4 +37,12 @@ public class TestDataBuilds{
 		gm.setLocation(l);
 		return gm;
 	}
+	
+	public String deletePlacePayload(String placeId) {
+		return "{\r\n"
+				+ "    \"place_id\":\""+placeId+"\"\r\n"
+				+ "}\r\n"
+				+ "";
+	}
+	
 }

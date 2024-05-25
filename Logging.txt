@@ -1,38 +1,30 @@
-Request method:	GET
-Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=456603b98743e5a6bad4ced0689e8dee
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=456603b98743e5a6bad4ced0689e8dee
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
 				Content-Type=application/json
 Cookies:		<none>
 Multiparts:		<none>
-Body:			<none>
+Body:
+{
+    "place_id": "f2d41d0cf2c53063e25187977030722b"
+}
 HTTP/1.1 200 OK
-Date: Wed, 22 May 2024 16:55:24 GMT
+Date: Sat, 25 May 2024 09:35:21 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 221
+Content-Length: 15
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 Content-Type: application/json;charset=UTF-8
 
 {
-    "location": {
-        "latitude": "-38.383494",
-        "longitude": "33.427362"
-    },
-    "accuracy": "50",
-    "name": "Jackson",
-    "phone_number": "(+91) 983 893 3937",
-    "address": "Slough",
-    "types": "shoe park,shop",
-    "website": "http://google.com",
-    "language": ""
+    "status": "OK"
 }
